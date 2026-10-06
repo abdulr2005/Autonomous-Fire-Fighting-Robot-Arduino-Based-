@@ -1,53 +1,64 @@
 # 🔥 Autonomous Fire-Fighting Robot
 
-An advanced robotics project featuring a mobile robot designed to detect, navigate toward, and extinguish fires automatically using Arduino and embedded sensors.
+An **Arduino-based autonomous robotics project** designed to detect a flame, navigate toward its direction, align an extinguishing mechanism, and activate a water pump when the target is confirmed at close range.
+
+The project combines embedded programming, sensor-driven decision logic, motor control, and mechanical actuation.
+
+## 🎯 System Objective
+
+The robot demonstrates a simple autonomous perception-and-action loop:
+
+**Flame Detection → Direction Estimation → Robot Navigation → Close-Range Verification → Nozzle Alignment → Pump Activation**
+
+## ⚙️ Main Capabilities
+
+- **Multi-direction flame detection** using a three-sensor array.
+- **Autonomous navigation** based on relative flame-sensor readings.
+- **Close-range verification** using a dedicated fourth flame sensor.
+- **Motor control** through an L298N driver and four DC motors.
+- **Servo-controlled extinguishing mechanism** for nozzle positioning.
+- **Automatic pump activation** after the fire condition is confirmed.
+
+## 🔩 Hardware
+
+| Component | Role |
+| --- | --- |
+| Arduino Nano / Uno | Main controller |
+| 4× IR flame sensors | Fire detection and verification |
+| L298N motor driver | DC motor control |
+| 4× DC motors | Robot movement |
+| 2× SG90 servo motors | Extinguishing mechanism positioning |
+| Water pump + relay | Fire-extinguishing action |
+| 12V Li-ion battery | System power |
+
+## 💻 Embedded Logic
+
+The controller is programmed in **C++ using the Arduino environment**.
+
+The navigation logic compares the left, front, and right flame-sensor readings to decide whether the robot should move forward or correct its direction.
+
+A separate verification sensor and `FIRE_PUMP_THRESHOLD` are used before activating the pump, helping prevent the extinguishing mechanism from triggering before the robot is sufficiently aligned with the detected flame.
+
+## 🧠 Engineering Concepts Demonstrated
+
+- Sensor-based autonomous decision making
+- Embedded C++ programming
+- DC motor control
+- Servo control
+- Threshold-based sensing
+- Robotics integration
+- Hardware/software coordination
+
+## 🧪 Testing
+
+The robot is intended to be tested only with a **small, controlled flame source** and appropriate supervision. The project is an educational robotics prototype, not certified fire-safety equipment.
+
+## 👥 Project Context
+
+Developed by **Abdulrahman Mohamed** as part of the Robotics course at the College of Information Technology, **Misr University for Science & Technology (MUST)**.
+
+Supervised by **Dr. Mohammed Abdelrahman Marey**.
 
 ---
 
-## 🚀 Key Features
-- **Autonomous Detection:** Uses a 3-sensor array to scan and locate fire sources in a 180° range.
-- **Smart Navigation:** Real-time logic to adjust movement (Forward, Left, Right) based on fire intensity.
-- **Precision Extinguishing:** A dedicated 4th sensor on a servo-controlled arm ensures the water pump only activates when directly facing the flame.
-- **Dual-Axis Control:** Uses servo motors to adjust the nozzle's angle for effective firefighting.
-
----
-
-## 🛠️ Hardware Components
-- **Microcontroller:** Arduino Nano / Uno.
-- **Sensing:** 4x Flame Sensors (Infrared).
-- **Actuators:** - L298N Motor Driver + 4x DC Motors.
-  - 2x SG90 Servo Motors (Base & Arm).
-  - Submersible Water Pump + Relay Module.
-- **Power:** 12V Li-ion Battery.
-
----
-
-## 💻 Software & Logic
-The robot's brain is programmed in **C++ (Arduino IDE)**. 
-- **Navigation Logic:** Compares values between Left, Front, and Right sensors.
-- **Verification Logic:** Uses a `FIRE_PUMP_THRESHOLD` to prevent accidental water spray unless a fire is confirmed at close range.
-
----
-
-## 📁 Project Structure
-- `Code/`: Arduino (.ino) source code for the robot's logic.
-- `Documentation/`: Full project report and methodology.
-- `Design/`: Circuit diagrams and Fritzing files (`.fzz`).
-- `Presentation/`: PowerPoint slides detailing the build and testing phases.
-
----
-
-## 🔧 Installation & Usage
-1. Upload the code provided in `por_code.pdf` (converted to .ino) to your Arduino.
-2. Connect the hardware according to the circuit diagram in the `Design` folder.
-3. Power the robot and place it in an area with a controlled fire source (e.g., a candle) for testing.
-
----
-
-## 👥 Project Team
-- **Abdulrahman Mohamed**
-- **Under supervision of: Dr. Mohammed Abdelrahman Marey**
-
----
-
-> **Note:** This project was developed as part of the Robotics course at the College of Information Technology, Misr University for Science & Technology (MUST).
+> **Safety note:** This is an educational prototype and must not be relied upon for real-world fire protection or emergency response.
